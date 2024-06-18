@@ -21,16 +21,19 @@ public struct LicenseResponse: Codable {
 
 public struct UserResponse: Codable {
     public let login: String
+    public let htmlUrl: URL
     public let avatarUrl: URL
 
-    public init(login: String, avatarUrl: URL) {
+    public init(login: String, htmlUrl: URL, avatarUrl: URL) {
         self.login = login
         self.avatarUrl = avatarUrl
+        self.htmlUrl = htmlUrl
     }
 }
 
 public struct RepoResponse: Codable {
     public let name: String
+    public let htmlUrl: URL
     public let archived: Bool
     public let owner: UserResponse
 
@@ -47,8 +50,9 @@ public struct RepoResponse: Codable {
     public let license: LicenseResponse?
     public let visibility: VisibilityResponse
 
-    public init(name: String, archived: Bool, owner: UserResponse, description: String?, createdAt: Date, updatedAt: Date, stargazersCount: Int, watchersCount: Int, forksCount: Int, language: String, disabled: Bool, license: LicenseResponse?, visibility: VisibilityResponse) {
+    public init(name: String, htmlUrl: URL, archived: Bool, owner: UserResponse, description: String?, createdAt: Date, updatedAt: Date, stargazersCount: Int, watchersCount: Int, forksCount: Int, language: String, disabled: Bool, license: LicenseResponse?, visibility: VisibilityResponse) {
         self.name = name
+        self.htmlUrl = htmlUrl
         self.archived = archived
         self.owner = owner
         self.description = description
